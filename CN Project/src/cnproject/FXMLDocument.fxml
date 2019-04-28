@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="403.0" prefWidth="423.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cnproject.FXMLDocumentController">
+   <children>
+      <Text layoutX="50.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Port" wrappingWidth="92.390625" />
+      <HBox layoutX="50.0" layoutY="157.0" prefHeight="35.0" prefWidth="291.0" style="-fx-background-color: #ffff; -fx-background-radius: 20;">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="      " />
+            <JFXTextField fx:id="PortInput" focusColor="WHITE" prefHeight="33.0" prefWidth="95.0" promptText="Type port here" style="-fx-background-radius: 10;" unFocusColor="WHITE">
+               <effect>
+                  <DropShadow color="#bca9a9" height="62.51" radius="36.685" width="86.23" />
+               </effect>
+               <font>
+                  <Font name="Leelawadee UI Semilight" size="12.0" />
+               </font>
+            </JFXTextField>
+         </children>
+         <effect>
+            <DropShadow height="3.0" radius="2.75" width="10.0" />
+         </effect>
+      </HBox>
+      <Text layoutX="50.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Username" wrappingWidth="92.390625" />
+      <HBox layoutX="50.0" layoutY="237.0" prefHeight="35.0" prefWidth="291.0" style="-fx-background-color: #ffff; -fx-background-radius: 20;">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="      " />
+            <JFXTextField fx:id="Usernameinput" focusColor="WHITE" prefHeight="33.0" prefWidth="95.0" promptText="Type Username here" style="-fx-background-radius: 10;" unFocusColor="WHITE">
+               <effect>
+                  <DropShadow color="#bca9a9" height="62.51" radius="36.685" width="86.23" />
+               </effect>
+               <font>
+                  <Font name="Leelawadee UI Semilight" size="12.0" />
+               </font>
+            </JFXTextField>
+         </children>
+         <effect>
+            <DropShadow height="3.0" radius="2.75" width="10.0" />
+         </effect>
+      </HBox>
+      <HBox layoutX="242.0" layoutY="307.0" prefHeight="35.0" prefWidth="110.0" style="-fx-background-color: #51abe2; -fx-background-radius: 20;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <JFXButton onAction="#handleNextButtonAction" prefHeight="34.0" prefWidth="110.0" ripplerFill="WHITE" text="Next" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></JFXButton>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+      <Text layoutX="33.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UDP - Chat Masssenger" textAlignment="RIGHT" wrappingWidth="357.01953125">
+         <font>
+            <Font name="Courier New" size="28.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
