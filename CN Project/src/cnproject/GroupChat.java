@@ -20,20 +20,21 @@ public class GroupChat implements Runnable {
     static String name;
     static volatile boolean finished = false;
     public static boolean checkFile = false;
-    public static String message="";
+    public static String message = "";
     static ObservableList<String> chatMessages;
     static String portStr;
+
     public GroupChat(ObservableList<String> chatMessages) {
         this.chatMessages = chatMessages;
     }
 
     public GroupChat() {
     }
-    
-    
+
     public static void setTXT(String TXTs) {
         message = TXTs;
     }
+
     public void StartChat(String[] args) {
         args = new String[2];
         args[0] = "localhost";
@@ -77,7 +78,7 @@ public class GroupChat implements Runnable {
                             socket.close();
                             break;
                         }
-                        if (message.equalsIgnoreCase("send file")) {
+                        if (message.toLowerCase().contains("file path")) {
                             System.out.println("in send file");
                             ByteArrayOutputStream bStream = new ByteArrayOutputStream();
                             ObjectOutput oo = new ObjectOutputStream(bStream);
@@ -93,14 +94,14 @@ public class GroupChat implements Runnable {
                             socket.send(datagram);
                             checkFile = true;
                             System.out.println("in send cehck: " + checkFile);
-                            message="";
+                            message = "";
                         } else {
-                            message = name + ":~" + message;
+                            message = name + ":~ " + message;
                             byte[] buffer = message.getBytes();
                             DatagramPacket datagram = new DatagramPacket(buffer, buffer.length, group, port);
                             socket.send(datagram);
                             System.out.println("mess: " + message);
-                            message="";
+                            message = "";
                         }
                     }
                 }
@@ -149,8 +150,8 @@ class ReadThread implements Runnable {
                 if (!message.startsWith(GroupChat.name)) {
                     System.out.println(message);
                     System.out.println("haha");
-                    if (message.contains("~")){
-                        GroupChat.chatMessages.add(message) ;
+                    if (message.contains("~")) {
+                        GroupChat.chatMessages.add(message);
                     }
                     if (GroupChat.checkFile == false) {
                         if (!message.contains("~")) {
@@ -162,7 +163,22 @@ class ReadThread implements Runnable {
                                 File f = file;
                                 System.out.println("file name: " + f.getName());
                                 System.out.println("file: " + file);
-                                GroupChat.chatMessages.add(file.getAbsolutePath()) ;
+                                GroupChat.chatMessages.add(file.getAbsolutePath());
+                                FileReader fr = new FileReader(f);
+                                int xx;
+                                String strr = "";
+                                while ((xx = fr.read()) != -1) {
+                                    System.out.print((char) xx);
+                                    char chr = (char) xx;
+                                    strr += chr;
+                                }
+                                fr.close();
+                                System.out.println("strr: " + strr);
+                                File f1 = new File("E:/filee2.txt");
+                                FileWriter fw = new FileWriter(f1);
+                                fw.write(strr);
+                                fw.close();
+                                GroupChat.chatMessages.add(strr);
                                 iStream.close();
                             } catch (IOException e) {
                                 System.out.println(e);
@@ -172,10 +188,10 @@ class ReadThread implements Runnable {
                             }
                             GroupChat.checkFile = false;
                         }
-                    } 
+                    }
 
                 }
-                
+
             } catch (IOException e) {
                 System.out.println("Socket closed!");
             }

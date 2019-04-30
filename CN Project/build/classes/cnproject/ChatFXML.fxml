@@ -42,7 +42,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <ListView fx:id="chatMessageList" layoutX="31.0" layoutY="75.0" onMouseClicked="#handleListClick" prefHeight="305.0" prefWidth="500.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" />
+      <ListView fx:id="chatMessageList" layoutX="31.0" layoutY="75.0" onMouseClicked="#handleListClick" prefHeight="305.0" prefWidth="500.0" />
       <JFXButton buttonType="RAISED" layoutX="471.0" layoutY="400.0" onAction="#handleAttachButtonAction" prefHeight="63.0" prefWidth="65.0" ripplerFill="#c6c3c3" style="-fx-background-radius: 20;" text="." textFill="#eef9ff">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
