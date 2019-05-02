@@ -26,7 +26,7 @@ import javafx.stage.FileChooser;
 /**
  * FXML Controller class
  *
- * @author Taseen Syed
+ * @author K16-3621 & K16-3639
  */
 public class ChatFXMLController implements Initializable {
 
@@ -38,6 +38,7 @@ public class ChatFXMLController implements Initializable {
     private ListView<String> chatMessageList;
     public static ObservableList<String> chatMessages = FXCollections.observableArrayList();
     public static String txt;
+    public static String msg;
 
     /**
      * Initializes the controller class.
@@ -58,7 +59,7 @@ public class ChatFXMLController implements Initializable {
         File f = fc.showOpenDialog(null);
         if (f != null) {
 //            label.setText("file path: " + f.getAbsolutePath());
-            messagaeField.setText("file path: " + f.getAbsolutePath());
+            messagaeField.setText("file path: " + f.getName());
         }
     }
 
@@ -78,6 +79,7 @@ public class ChatFXMLController implements Initializable {
         GroupChat.setTXT(messagaeField.getText().trim());
         if (!txt.isEmpty()) {
             chatMessages.add(GroupChat.name + " : " + messagaeField.getText());
+            msg = GroupChat.name + " : " + messagaeField.getText();
         }
         messagaeField.setText("");
     }
@@ -88,7 +90,7 @@ public class ChatFXMLController implements Initializable {
             String path = chatMessageList.getSelectionModel().getSelectedItem();
             if (path.toLowerCase().contains("file path:")) {
 //                chatMessages.add("item double cliked: " + path);
-                Desktop.getDesktop().open(new File("E:\\Books"));
+                Desktop.getDesktop().open(new File("E:\\rec_file"));
             }
 
         }

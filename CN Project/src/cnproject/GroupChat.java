@@ -7,7 +7,7 @@ package cnproject;
 
 /**
  *
- * @author somanbaqai
+ * @author K16-3621 & K16-3639
  */
 import java.net.*;
 import java.io.*;
@@ -80,20 +80,32 @@ public class GroupChat implements Runnable {
                         }
                         if (message.toLowerCase().contains("file path")) {
                             System.out.println("in send file");
+                            message = name + ":~ " + message;
+                            byte[] buffer = message.getBytes();
+                            DatagramPacket datagram = new DatagramPacket(buffer, buffer.length, group, port);
+                            socket.send(datagram);
                             ByteArrayOutputStream bStream = new ByteArrayOutputStream();
                             ObjectOutput oo = new ObjectOutputStream(bStream);
                             oo.writeObject(file);
                             oo.close();
                             message = name + ":";
-                            byte[] buffer = message.getBytes();
+                            
+                            buffer = message.getBytes();
 
                             byte[] serializedMessage = bStream.toByteArray();
 
 //                        System.out.println("ser: " + serializedMessage);
-                            DatagramPacket datagram = new DatagramPacket(serializedMessage, serializedMessage.length, group, port);
+                            datagram = new DatagramPacket(serializedMessage, serializedMessage.length, group, port);
                             socket.send(datagram);
                             checkFile = true;
                             System.out.println("in send cehck: " + checkFile);
+//                            message = "";
+                            
+//                            message = ChatFXMLController.msg;
+//                            byte[] buffer2 = message.getBytes();
+//                            DatagramPacket datagram2 = new DatagramPacket(buffer2, buffer2.length, group, port);
+                     
+                            System.out.println("mess: " + message);
                             message = "";
                         } else {
                             message = name + ":~ " + message;
@@ -163,7 +175,7 @@ class ReadThread implements Runnable {
                                 File f = file;
                                 System.out.println("file name: " + f.getName());
                                 System.out.println("file: " + file);
-                                GroupChat.chatMessages.add(file.getAbsolutePath());
+//                                GroupChat.chatMessages.add(file.getAbsolutePath());
                                 FileReader fr = new FileReader(f);
                                 int xx;
                                 String strr = "";
@@ -174,11 +186,18 @@ class ReadThread implements Runnable {
                                 }
                                 fr.close();
                                 System.out.println("strr: " + strr);
-                                File f1 = new File("E:/filee2.txt");
+                                File f1 = new File("E:/rec_file/rec " + f.getName());
+                          
+                                System.out.println("rec file: " + f1.getAbsolutePath());
+                                if(f1.createNewFile()){
+                                    System.out.println("file created");
+                                }else {
+                                    System.out.println("exist already");
+                                }
                                 FileWriter fw = new FileWriter(f1);
                                 fw.write(strr);
                                 fw.close();
-                                GroupChat.chatMessages.add(strr);
+//                                GroupChat.chatMessages.add(strr);
                                 iStream.close();
                             } catch (IOException e) {
                                 System.out.println(e);

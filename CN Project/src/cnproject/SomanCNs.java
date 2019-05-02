@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Taseen Syed
+ * @author K16-3621 & K16-3639
  */
 public class SomanCNs extends Application {
     
