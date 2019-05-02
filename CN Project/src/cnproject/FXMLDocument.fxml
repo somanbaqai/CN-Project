@@ -64,6 +64,6 @@
             <Font name="Courier New" size="28.0" />
          </font>
       </Text>
-      <Text fx:id="PortErrorField" fill="#d30b0b" layoutX="142.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="port error: " textAlignment="CENTER" wrappingWidth="92.390625" />
+      <Text fx:id="PortErrorField" fill="#d30b0b" layoutX="142.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="92.390625" />
    </children>
 </AnchorPane>
