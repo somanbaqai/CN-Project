@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="403.0" prefWidth="423.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cnproject.FXMLDocumentController">
+<AnchorPane id="AnchorPane" maxHeight="403.0" maxWidth="423.0" minHeight="403.0" minWidth="423.0" prefHeight="403.0" prefWidth="423.0" style="-fx-background-color: #ffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cnproject.FXMLDocumentController">
    <children>
       <Text layoutX="50.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Port" wrappingWidth="92.390625" />
       <HBox layoutX="50.0" layoutY="157.0" prefHeight="35.0" prefWidth="291.0" style="-fx-background-color: #ffff; -fx-background-radius: 20;">
@@ -59,11 +59,11 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </HBox>
-      <Text layoutX="33.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UDP - Chat Masssenger" textAlignment="RIGHT" wrappingWidth="357.01953125">
+      <Text layoutX="33.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UDP - Chat Messsenger" textAlignment="RIGHT" wrappingWidth="357.01953125">
          <font>
             <Font name="Courier New" size="28.0" />
          </font>
       </Text>
-      <Text fx:id="PortErrorField" fill="#d30b0b" layoutX="142.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="92.390625" />
+      <Text fx:id="PortErrorField" fill="#d30b0b" layoutX="124.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="143.390625" />
    </children>
 </AnchorPane>

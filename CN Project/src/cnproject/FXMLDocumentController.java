@@ -48,14 +48,14 @@ public class FXMLDocumentController implements Initializable {
     private void handleNextButtonAction(ActionEvent event) throws IOException {
         String port = PortInput.getText();
         if (port.length() < 4) {
-            PortErrorField.setText("chek port length");
+            PortErrorField.setText("Check port length");
         } else if(Usernameinput.getText().length() > 0) {
             GroupChat.portStr = PortInput.getText();
             GroupChat.name = Usernameinput.getText();
             ((Stage) Usernameinput.getScene().getWindow()).close();
             Parent parent = FXMLLoader.load(getClass().getResource("ChatFXML.fxml"));
             Stage stage = new Stage();
-            stage.setTitle("Home - Chat Messenger - " + PortInput.getText().trim());
+            stage.setTitle("Home - Chat Messenger - " + Usernameinput.getText().trim());
             stage.setScene(new Scene(parent));
             stage.show();
         } else {

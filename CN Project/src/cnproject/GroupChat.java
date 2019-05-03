@@ -23,7 +23,8 @@ public class GroupChat implements Runnable {
     public static String message = "";
     static ObservableList<String> chatMessages;
     static String portStr;
-
+    ff file;
+    static String uploadFilePath = null;
     public GroupChat(ObservableList<String> chatMessages) {
         this.chatMessages = chatMessages;
     }
@@ -39,7 +40,7 @@ public class GroupChat implements Runnable {
         args = new String[2];
         args[0] = "localhost";
         args[1] = portStr;
-        ff file = new ff("E:/filee.txt");
+        
         System.out.println("port: " + args[1]);
 
         if (args.length != 2) {
@@ -80,6 +81,7 @@ public class GroupChat implements Runnable {
                         }
                         if (message.toLowerCase().contains("file path")) {
                             System.out.println("in send file");
+                            file = new ff(uploadFilePath);
                             message = name + ":~ " + message;
                             byte[] buffer = message.getBytes();
                             DatagramPacket datagram = new DatagramPacket(buffer, buffer.length, group, port);
@@ -140,7 +142,7 @@ class ReadThread implements Runnable {
     private MulticastSocket socket;
     private InetAddress group;
     private int port;
-    private static final int MAX_LEN = 1000;
+    private static final int MAX_LEN = 2000;
 
     ReadThread(MulticastSocket socket, InetAddress group, int port) {
         this.socket = socket;
@@ -157,15 +159,15 @@ class ReadThread implements Runnable {
             try {
                 socket.receive(datagram);
                 message = new String(buffer, 0, datagram.getLength(), "UTF-8");
-                System.out.println("echk = " + GroupChat.checkFile);
+//                System.out.println("echk = " + GroupChat.checkFile);
                 System.out.println("mes rec: " + message);
                 if (!message.startsWith(GroupChat.name)) {
-                    System.out.println(message);
-                    System.out.println("haha");
+//                    System.out.println(message);
+//                    System.out.println("haha");
                     if (message.contains("~")) {
                         GroupChat.chatMessages.add(message);
                     }
-                    if (GroupChat.checkFile == false) {
+//                    if (GroupChat.checkFile == false) {
                         if (!message.contains("~")) {
                             System.out.println("in rec file");
                             try {
@@ -173,8 +175,8 @@ class ReadThread implements Runnable {
                                 ObjectInputStream iStream = new ObjectInputStream(new ByteArrayInputStream(buffer));
                                 ff file = (ff) iStream.readObject();
                                 File f = file;
-                                System.out.println("file name: " + f.getName());
-                                System.out.println("file: " + file);
+//                                System.out.println("file name rec: " + f.getName());
+                                System.out.println("file rec : " + file);
 //                                GroupChat.chatMessages.add(file.getAbsolutePath());
                                 FileReader fr = new FileReader(f);
                                 int xx;
@@ -205,9 +207,9 @@ class ReadThread implements Runnable {
                             } catch (ClassNotFoundException e) {
                                 System.out.println("class: " + e);
                             }
-                            GroupChat.checkFile = false;
+                            GroupChat.checkFile = true;
                         }
-                    }
+//                    }
 
                 }
 

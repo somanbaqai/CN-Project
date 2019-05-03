@@ -60,6 +60,7 @@ public class ChatFXMLController implements Initializable {
         if (f != null) {
 //            label.setText("file path: " + f.getAbsolutePath());
             messagaeField.setText("file path: " + f.getName());
+            GroupChat.uploadFilePath = f.getAbsolutePath();
         }
     }
 
@@ -69,6 +70,7 @@ public class ChatFXMLController implements Initializable {
         GroupChat.setTXT(messagaeField.getText().trim());
         if (!txt.isEmpty()) {
             chatMessages.add(GroupChat.name + " : " + messagaeField.getText());
+            
         }
         messagaeField.setText("");
     }
